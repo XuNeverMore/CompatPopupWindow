@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="@dimen/padding_list_item"
+    android:paddingEnd="@dimen/padding_list_item"
+    android:paddingTop="@dimen/padding_list_top"
+    android:paddingBottom="@dimen/padding_list_top"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:paddingStart="@dimen/dp8"
+        android:paddingRight="@dimen/dp8"
+        android:paddingTop="@dimen/dp12"
+        android:paddingBottom="@dimen/dp12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_video_preview"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@color/colorPrimaryDark"
+            android:layout_width="120dp"
+            android:layout_height="90dp" />
+
+        <TextView
+            android:singleLine="true"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="@+id/iv_video_preview"
+            android:layout_marginTop="@dimen/dp5"
+            android:id="@+id/tv_video_name"
+            android:layout_marginStart="@dimen/dp8"
+            app:layout_constraintLeft_toRightOf="@+id/iv_video_preview"
+            android:text="My Video 04"
+            android:textSize="@dimen/dp16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp5"
+            android:text="文件大小：20 MB"
+            android:textSize="@dimen/dp12"
+            app:layout_constraintTop_toBottomOf="@+id/tv_video_name"
+            android:id="@+id/tv_video_size"
+            android:layout_marginStart="@dimen/dp8"
+            app:layout_constraintLeft_toRightOf="@+id/iv_video_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginBottom="@dimen/dp5"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_video_preview"
+            android:id="@+id/tv_create_time"
+            android:text="2018-11-14"
+            android:textSize="@dimen/dp12"
+            android:layout_marginStart="@dimen/dp8"
+            app:layout_constraintLeft_toRightOf="@+id/iv_video_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:background="?selectableItemBackgroundBorderless"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:background="@drawable/bg_video_duration"
+            android:text="05:00"
+            android:paddingStart="@dimen/dp4"
+            android:paddingEnd="@dimen/dp4"
+            android:paddingTop="@dimen/dp2"
+            android:paddingBottom="@dimen/dp2"
+            android:textSize="@dimen/dp12"
+            android:layout_margin="@dimen/dp4"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_video_preview"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_video_preview"
+            android:textColor="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

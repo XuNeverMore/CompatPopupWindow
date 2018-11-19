@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CompatPopupWindow</string>
+
+
+
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+</resources>
