@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AnimStyle" parent="Animation.AppCompat.DropDownUp">
+        <item name="android:windowEnterAnimation">@anim/anim_zoom_out_right_top</item>
+        <item name="android:windowExitAnimation">@anim/anim_zoom_in_left_bottom</item>
+    </style>
+
+    <style name="AnimStyle.Bottom" parent="Animation.AppCompat.DropDownUp">
+        <item name="android:windowEnterAnimation">@anim/anim_zoom_out_bottom_right</item>
+        <item name="android:windowExitAnimation">@anim/anim_zoom_in_right_bottom</item>
+    </style>
+
     <style name="MoreTextStyle">
         <item name="android:clickable">true</item>
         <item name="android:paddingStart">18dp</item>

@@ -1,4 +1,4 @@
-package com.cutejoys.compatpopupwindow;
+package com.cutejoys.compatpw;
 
 import android.content.Context;
 import android.view.Display;

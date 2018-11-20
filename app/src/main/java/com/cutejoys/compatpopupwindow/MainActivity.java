@@ -1,24 +1,29 @@
 package com.cutejoys.compatpopupwindow;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 
 import com.cutejoys.compatpopupwindow.adapter.BaseRecyclerViewAdapter;
 import com.cutejoys.compatpopupwindow.adapter.BaseViewHolder;
-import com.cutejoys.compatpopupwindow.popup.CompatPopupWindow;
+import com.cutejoys.compatpw.CompatPopupWindow;
+import com.cutejoys.compatpw.UtilsSize;
 
 public class MainActivity extends AppCompatActivity {
 
-    private PopupWindow mPopupWindow;
+    private CompatPopupWindow mPopupWindow;
+    private int mHeight;
+    private int mAvailableHeight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,38 +31,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(new MyAdapter());
 
         CompatPopupWindow popupWindow = new CompatPopupWindow();
     }
 
-    private void showPopWindow(ImageView ivMore) {
+    private void showPopWindow(final ImageView ivMore) {
         Context context = ivMore.getContext();
-        mPopupWindow = new PopupWindow();
+        mPopupWindow = new CompatPopupWindow();
         int width = UtilsSize.dpToPx(this,140);
         mPopupWindow.setWidth(width);
         mPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        View contentView = LayoutInflater.from(context).inflate(R.layout.window_more, null);
+        final View contentView = LayoutInflater.from(context).inflate(R.layout.window_more, null);
         mPopupWindow.setContentView(contentView);
         mPopupWindow.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.bg_more_window));
         mPopupWindow.setOutsideTouchable(true);
-//        popupWindow.setTouchable(true);
-        mPopupWindow.setFocusable(false);
+        mPopupWindow.setFocusable(true);
         mPopupWindow.setElevation(16);
-        int[] location = new int[2];
-        ivMore.getLocationInWindow(location);
+        mPopupWindow.setMinWidowHeight(UtilsSize.dpToPx(this,200));
+        mPopupWindow.showAsDropDown(ivMore, 0, 0, Gravity.END|Gravity.TOP);
 
-        int yoff = -ivMore.getMeasuredHeight() / 2;
-        int availableHeight = UtilsSize.getScreenHeight(context) - location[1];
-        int windowHeight = UtilsSize.dpToPx(context, 215);
-        if (availableHeight < windowHeight) {
-            yoff = availableHeight - windowHeight;
-            mPopupWindow.setAnimationStyle(R.style.AnimStyle_Bottom);
-        } else {
-            mPopupWindow.setAnimationStyle(R.style.AnimStyle);
-        }
-        mPopupWindow.showAsDropDown(ivMore, -width + ivMore.getMeasuredWidth(), yoff);
     }
+
+    private static final String TAG = "MainActivity";
 
     private class MyAdapter extends BaseRecyclerViewAdapter<String>{
 
